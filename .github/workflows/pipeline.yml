@@ -20,6 +20,10 @@ jobs:
           echo "Verificando estrutura do projeto..."
           ls -la
 
+      - name: Fail Fast Test
+        run: |
+          echo "Simulando verificação..."
+
       - name: Validar HTML
         run: |
           echo "Simulando validação do HTML..."
