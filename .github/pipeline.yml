@@ -1,0 +1,46 @@
+name: Pipeline CI - TechNova
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  validar_codigo:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Verificar arquivos do projeto
+        run: |
+          echo "Verificando estrutura do projeto..."
+          ls -la
+
+      - name: Validar HTML
+        run: |
+          echo "Simulando validação do HTML..."
+          echo "HTML verificado com sucesso"
+
+
+  build_projeto:
+
+    needs: validar_codigo
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio novamente
+        uses: actions/checkout@v3
+
+      - name: Simular Build do Projeto
+        run: |
+          echo "Iniciando processo de build..."
+          echo "Build finalizado com sucesso"
+
+      - name: Mostrar mensagem secreta
+        run: |
+          echo "Mensagem secreta: ${{ secrets.MENSAGEM_SECRETA }}"
